@@ -6,31 +6,31 @@ using System.Threading.Tasks;
 
 namespace Assignment1
 {
-    public class InputClass
+    public class InputHandler
     {
-        public static void InputMethod()
+        public static void ProcessInput()
         {
-                Class1 c1 = new Class1();
+                StringSearcher c1 = new StringSearcher();
                 while (true)
                 {
                     Console.Write("Enter the main string (S1): ");
-                    string s1 = Console.ReadLine();
+                    string mainString = Console.ReadLine();
 
                     Console.Write("Enter the substring to find (S2): ");
-                    string s2 = Console.ReadLine();
+                    string substring = Console.ReadLine();
 
-                    if (string.IsNullOrEmpty(s1) || string.IsNullOrEmpty(s2))
+                    if (string.IsNullOrEmpty(mainString) || string.IsNullOrEmpty(substring))
                     {
                         Console.WriteLine("Both strings must be non-empty. Try again.");
                         continue;
                     }
-                    List<int> indexes = c1.FindAllIndexes(s1, s2);
+                    List<int> indexPositions = c1.FindAllIndexes(mainString, substring);
 
-                    Console.WriteLine("No. of times occurred = " + indexes.Count);
+                    Console.WriteLine("No. of times occurred = " + indexPositions.Count);
                     Console.Write("Index positions = ");
-                    foreach (int pos in indexes)
+                    foreach (int position in indexPositions)
                     {
-                        Console.Write(pos + " ");
+                        Console.Write(position + " ");
                     }
                     Console.WriteLine();
 

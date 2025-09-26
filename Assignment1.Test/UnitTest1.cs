@@ -6,11 +6,11 @@ namespace Assignment1.Test
 {
     public class Class1Tests
     {
-        private readonly Class1 _class1 = new Class1();
+        private readonly StringSearcher _class1 = new StringSearcher();
 
         // 1. Normal case: single match
         [Fact]
-        public void FindAllIndexes_SingleMatch_ReturnsCorrectIndex()
+        public void SingleMatch_ReturnsCorrectIndex()
         {
             string s1 = "hello world";
             string s2 = "world";
@@ -23,7 +23,7 @@ namespace Assignment1.Test
 
         // 2. Multiple matches
         [Fact]
-        public void FindAllIndexes_MultipleMatches_ReturnsAllIndexes()
+        public void MultipleMatches_ReturnsAllIndexes()
         {
             string s1 = "ababab";
             string s2 = "ab";
@@ -36,7 +36,7 @@ namespace Assignment1.Test
 
         // 3. No match found
         [Fact]
-        public void FindAllIndexes_NoMatch_ReturnsEmptyList()
+        public void NoMatch_ReturnsEmptyList()
         {
             string s1 = "hello";
             string s2 = "xyz";
@@ -48,7 +48,7 @@ namespace Assignment1.Test
 
         // 4. Empty substring (s2)
         [Fact]
-        public void FindAllIndexes_EmptySubstring_ReturnsEmptyList()
+        public void EmptySubstring_ReturnsEmptyList()
         {
             string s1 = "hello";
             string s2 = "";
@@ -60,7 +60,7 @@ namespace Assignment1.Test
 
         // 5. Substring longer than main string
         [Fact]
-        public void FindAllIndexes_SubstringLongerThanMainString_ReturnsEmptyList()
+        public void SubstringLongerThanMain_ReturnsEmptyList()
         {
             string s1 = "hi";
             string s2 = "hello";
@@ -72,7 +72,7 @@ namespace Assignment1.Test
 
         // 6. Case sensitivity check
         [Fact]
-        public void FindAllIndexes_CaseSensitive_ReturnsOnlyExactMatches()
+        public void CaseSensitive_ReturnsExactMatchesOnly()
         {
             string s1 = "Hello hello";
             string s2 = "hello";
@@ -85,7 +85,7 @@ namespace Assignment1.Test
 
         // 7. Null inputs - expect ArgumentNullException (Optional: if your method throws it)
         [Fact]
-        public void FindAllIndexes_NullMainString_ThrowsArgumentNullException()
+        public void NullMainString_ThrowsArgumentNullException()
         {
             string s1 = null;
             string s2 = "test";
@@ -94,7 +94,7 @@ namespace Assignment1.Test
         }
 
         [Fact]
-        public void FindAllIndexes_NullSubstring_ThrowsArgumentNullException()
+        public void NullSubstring_ThrowsArgumentNullException()
         {
             string s1 = "test";
             string s2 = null;
