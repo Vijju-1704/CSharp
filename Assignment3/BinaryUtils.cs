@@ -1,8 +1,8 @@
 ﻿namespace Assignment3
 {
-    class BinaryUtils
+    public class BinaryUtils
     {
-        // 1. Add two binary numbers (with fractions)
+        //Add two binary numbers (with fractions)
         public static string AddBinaryWithFraction(string a, string b)
         {
             string[] partsA = a.Split('.');
@@ -62,7 +62,7 @@
                 return intResult + "." + fracResult.TrimEnd('0');
         }
 
-        // 2. Convert binary string (e.g. "101.0101") to float/double
+        //Convert binary string to float
         public static double BinaryToFloat(string binary)
         {
             string[] parts = binary.Split('.');
@@ -90,7 +90,7 @@
             return result;
         }
 
-        // 3. Convert float/double to binary string
+        //Convert float to binary string
         public static string FloatToBinaryString(double num, int fractionBits = 23)
         {
             bool isNegative = false;

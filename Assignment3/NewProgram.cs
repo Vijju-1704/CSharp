@@ -1,11 +1,27 @@
 ﻿namespace Assignment3
 {
-    internal class NewProgram
+    public class NewProgram
     {
-        static void Main()
+        //Checks for the valid inputs and return true if they are valid or else returns false
+        public static bool IsValidFloatInput(string input, out double value)
         {
-            Console.WriteLine("=== Float Binary Calculator ===");
-            Console.WriteLine("Press 'q' at any point to exit.\n");
+            value = 0;
+
+            if (string.IsNullOrWhiteSpace(input))
+                return false;
+
+            if (!double.TryParse(input, out value))
+                return false;
+
+            if (value < 0)
+                return false;
+
+            return true;
+        }
+        public static void InputMethod()
+        {
+            //Console.WriteLine("=== Float Binary Calculator ===");
+            //Console.WriteLine("Press 'q' at any point to exit.\n");
 
             while (true)
             {
@@ -17,12 +33,12 @@
                 string input2 = Console.ReadLine().Trim();
                 if (input2.ToLower() == "q") break;
 
-                if (!double.TryParse(input1, out double float1) || !double.TryParse(input2, out double float2))
+
+                if (!IsValidFloatInput(input1, out double float1) || !IsValidFloatInput(input2, out double float2))
                 {
-                    Console.WriteLine("Invalid input. Please enter valid float numbers.\n");
+                    Console.WriteLine("Invalid input. Please enter positive float numbers only.\n");
                     continue;
                 }
-
                 // Get binary representations
                 string binary1 = BinaryUtils.FloatToBinaryString(float1);
                 string binary2 = BinaryUtils.FloatToBinaryString(float2);
@@ -40,7 +56,7 @@
                 Console.WriteLine($"Sum in float        = {floatSum}\n");
             }
 
-            Console.WriteLine("Exited.");
+            //Console.WriteLine("Exited.");
         }
     }
 }
