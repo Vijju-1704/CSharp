@@ -1,0 +1,105 @@
+using Assignment1;
+using System.Collections.Generic;
+using Xunit;
+
+namespace Assignment1.Test
+{
+    public class Class1Tests
+    {
+        private readonly Class1 _class1 = new Class1();
+
+        // 1. Normal case: single match
+        [Fact]
+        public void FindAllIndexes_SingleMatch_ReturnsCorrectIndex()
+        {
+            string s1 = "hello world";
+            string s2 = "world";
+            List<int> expected = new List<int> { 6 };
+
+            var actual = _class1.FindAllIndexes(s1, s2);
+
+            Assert.Equal(expected, actual);
+        }
+
+        // 2. Multiple matches
+        [Fact]
+        public void FindAllIndexes_MultipleMatches_ReturnsAllIndexes()
+        {
+            string s1 = "ababab";
+            string s2 = "ab";
+            List<int> expected = new List<int> { 0, 2, 4 };
+
+            var actual = _class1.FindAllIndexes(s1, s2);
+
+            Assert.Equal(expected, actual);
+        }
+
+        // 3. No match found
+        [Fact]
+        public void FindAllIndexes_NoMatch_ReturnsEmptyList()
+        {
+            string s1 = "hello";
+            string s2 = "xyz";
+
+            var actual = _class1.FindAllIndexes(s1, s2);
+
+            Assert.Empty(actual);
+        }
+
+        // 4. Empty substring (s2)
+        [Fact]
+        public void FindAllIndexes_EmptySubstring_ReturnsEmptyList()
+        {
+            string s1 = "hello";
+            string s2 = "";
+
+            var actual = _class1.FindAllIndexes(s1, s2);
+
+            Assert.Empty(actual);
+        }
+
+        // 5. Substring longer than main string
+        [Fact]
+        public void FindAllIndexes_SubstringLongerThanMainString_ReturnsEmptyList()
+        {
+            string s1 = "hi";
+            string s2 = "hello";
+
+            var actual = _class1.FindAllIndexes(s1, s2);
+
+            Assert.Empty(actual);
+        }
+
+        // 6. Case sensitivity check
+        [Fact]
+        public void FindAllIndexes_CaseSensitive_ReturnsOnlyExactMatches()
+        {
+            string s1 = "Hello hello";
+            string s2 = "hello";
+            List<int> expected = new List<int> { 6 };
+
+            var actual = _class1.FindAllIndexes(s1, s2);
+
+            Assert.Equal(expected, actual);
+        }
+
+        // 7. Null inputs - expect ArgumentNullException (Optional: if your method throws it)
+        [Fact]
+        public void FindAllIndexes_NullMainString_ThrowsArgumentNullException()
+        {
+            string s1 = null;
+            string s2 = "test";
+
+            Assert.Throws<System.ArgumentNullException>(() => _class1.FindAllIndexes(s1, s2));
+        }
+
+        [Fact]
+        public void FindAllIndexes_NullSubstring_ThrowsArgumentNullException()
+        {
+            string s1 = "test";
+            string s2 = null;
+
+            Assert.Throws<System.ArgumentNullException>(() => _class1.FindAllIndexes(s1, s2));
+        }
+    }
+}

@@ -1,19 +1,22 @@
 ﻿namespace Assignment1
 {
-    internal class Class1
+    public class Class1
     {
-        public List<int> FindAllIndexes(string s1, string s2)
+        public List<int> FindAllIndexes(string string1, string string2)
         {
+            if (string1 == null) throw new ArgumentNullException(nameof(string1));
+            if (string2 == null) throw new ArgumentNullException(nameof(string2));
             List<int> indexes = new List<int>();
+            if (string2 == "") return indexes;
             //int index = 0;
             //while ((index = bigString.IndexOf(smallString, index)) != -1)
             //{
             //    indexes.Add(index);
             //    index += smallString.Length; 
             //}
-            for (int i = 0; i <= s1.Length - s2.Length; i++)
+            for (int i = 0; i <= string1.Length - string2.Length; i++)
             {
-                if (s1.Substring(i, s2.Length) == s2)
+                if (string1.Substring(i, string2.Length) == string2)
                 {
                     indexes.Add(i);
                 }

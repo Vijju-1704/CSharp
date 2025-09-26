@@ -1,48 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Assignment1
+﻿namespace Assignment1
 {
-    internal class Program
+    public class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            Class1 c1 = new Class1();
-
-            while (true)
-            {
-                Console.Write("Enter the main string (S1): ");
-                string s1 = Console.ReadLine();
-
-                Console.Write("Enter the substring to find (S2): ");
-                string s2 = Console.ReadLine();
-
-                if (string.IsNullOrEmpty(s1) || string.IsNullOrEmpty(s2))
-                {
-                    Console.WriteLine("Both strings must be non-empty. Try again.");
-                    continue;
-                }
-
-                List<int> indexes = c1.FindAllIndexes(s1, s2);
-
-                Console.WriteLine("No. of times occurred = " + indexes.Count);
-                Console.Write("Index positions = ");
-                foreach (int pos in indexes)
-                {
-                    Console.Write(pos + " ");
-                }
-                Console.WriteLine();
-
-                Console.Write("\nPress 'q' to quit or any other key to continue: ");
-                var key = Console.ReadKey().KeyChar;
-                if (key == 'q' || key == 'Q')
-                {
-                    Console.WriteLine("\nExiting the program.");
-                    break;
-                }
-
-                Console.WriteLine(); 
-            }
+            Console.WriteLine("Finding the indexes of the string 2 in string 1");
+            InputClass.InputMethod();
+            Console.WriteLine("Exiting...");
         }
     }
 }
