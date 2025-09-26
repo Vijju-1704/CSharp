@@ -8,7 +8,7 @@ namespace Assignment3
         {
             Console.WriteLine("=== Float Binary Calculator ===");
             Console.WriteLine("Press 'q' at any point to exit.\n");
-            NewProgram.InputMethod();
+            FloatBinaryCalculator.RunCalculator();
             Console.WriteLine("Exited.");
 
         }

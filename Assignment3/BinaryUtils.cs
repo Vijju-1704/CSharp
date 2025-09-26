@@ -5,85 +5,85 @@
         //Add two binary numbers (with fractions)
         public static string AddBinaryWithFraction(string a, string b)
         {
-            string[] partsA = a.Split('.');
-            string[] partsB = b.Split('.');
+            string[] Exponent = a.Split('.');
+            string[] Mantissa = b.Split('.');
 
-            string intA = partsA[0];
-            string fracA = partsA.Length > 1 ? partsA[1] : "";
+            string integerA = Exponent[0];
+            string fractionA = Exponent.Length > 1 ? Exponent[1] : "";
 
-            string intB = partsB[0];
-            string fracB = partsB.Length > 1 ? partsB[1] : "";
+            string integerB = Mantissa[0];
+            string fractionB = Mantissa.Length > 1 ? Mantissa[1] : "";
 
             // Pad fractional parts
-            int maxFracLength = Math.Max(fracA.Length, fracB.Length);
-            fracA = fracA.PadRight(maxFracLength, '0');
-            fracB = fracB.PadRight(maxFracLength, '0');
+            int maxFractionLength = Math.Max(fractionA.Length, fractionB.Length);
+            fractionA = fractionA.PadRight(maxFractionLength, '0');
+            fractionB = fractionB.PadRight(maxFractionLength, '0');
 
             // Add fractional part
-            string fracResult = "";
+            string fractionResult = "";
             int carry = 0;
 
-            for (int i = maxFracLength - 1; i >= 0; i--)
+            for (int i = maxFractionLength - 1; i >= 0; i--)
             {
-                int bitA = fracA[i] - '0';
-                int bitB = fracB[i] - '0';
+                int bitA = fractionA[i] - '0';
+                int bitB = fractionB[i] - '0';
 
                 int sum = bitA + bitB + carry;
-                fracResult = (sum % 2) + fracResult;
+                fractionResult = (sum % 2) + fractionResult;
                 carry = sum / 2;
             }
 
             // Pad integer parts
-            int maxIntLength = Math.Max(intA.Length, intB.Length);
-            intA = intA.PadLeft(maxIntLength, '0');
-            intB = intB.PadLeft(maxIntLength, '0');
+            int maxIntLength = Math.Max(integerA.Length, integerB.Length);
+            integerA = integerA.PadLeft(maxIntLength, '0');
+            integerB = integerB.PadLeft(maxIntLength, '0');
 
             // Add integer part
-            string intResult = "";
+            string integerResult = "";
             for (int i = maxIntLength - 1; i >= 0; i--)
             {
-                int bitA = intA[i] - '0';
-                int bitB = intB[i] - '0';
+                int bitA = integerA[i] - '0';
+                int bitB = integerB[i] - '0';
 
                 int sum = bitA + bitB + carry;
-                intResult = (sum % 2) + intResult;
+                integerResult = (sum % 2) + integerResult;
                 carry = sum / 2;
             }
 
             if (carry > 0)
             {
-                intResult = "1" + intResult;
+                integerResult = "1" + integerResult;
             }
 
             // Final result
-            if (fracResult.TrimEnd('0') == "")
-                return intResult;
+            if (fractionResult.TrimEnd('0') == "")
+                return integerResult;
             else
-                return intResult + "." + fracResult.TrimEnd('0');
+                return integerResult + "." + fractionResult.TrimEnd('0');
         }
 
         //Convert binary string to float
         public static double BinaryToFloat(string binary)
         {
             string[] parts = binary.Split('.');
-            string intPart = parts[0];
-            string fracPart = parts.Length > 1 ? parts[1] : "";
+            string integerPart = parts[0];
+            string fractionPart = parts.Length > 1 ? parts[1] : "";
 
             double result = 0;
             int power = 0;
 
-            // Integer part
-            for (int i = intPart.Length - 1; i >= 0; i--)
+            // integerA part
+            for (int i = integerPart.Length - 1; i >= 0; i--)
             {
-                if (intPart[i] == '1')
+                if (integerPart[i] == '1')
                     result += Math.Pow(2, power);
                 power++;
             }
 
             // Fractional part
-            for (int i = 0; i < fracPart.Length; i++)
+            for (int i = 0; i < fractionPart.Length; i++)
             {
-                if (fracPart[i] == '1')
+                if (fractionPart[i] == '1')
                     result += Math.Pow(2, -(i + 1));
             }
 
@@ -103,29 +103,29 @@
             long integerPart = (long)Math.Floor(num);
             double fractionalPart = num - integerPart;
 
-            string intBinary = Convert.ToString(integerPart, 2);
+            string integerBinary = Convert.ToString(integerPart, 2);
 
-            string fracBinary = "";
+            string fractionBinary = "";
             int count = 0;
             while (fractionalPart > 0 && count < fractionBits)
             {
                 fractionalPart *= 2;
                 if (fractionalPart >= 1)
                 {
-                    fracBinary += "1";
+                    fractionBinary += "1";
                     fractionalPart -= 1;
                 }
                 else
                 {
-                    fracBinary += "0";
+                    fractionBinary += "0";
                 }
                 count++;
             }
 
-            string result = (isNegative ? "-" : "") + intBinary;
-            if (fracBinary != "")
+            string result = (isNegative ? "-" : "") + integerBinary;
+            if (fractionBinary != "")
             {
-                result += "." + fracBinary;
+                result += "." + fractionBinary;
             }
 
             return result;
