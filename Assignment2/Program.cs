@@ -1,26 +1,23 @@
 ﻿namespace Assignment2
 {
-        internal class Program
+    class Program
+    {
+        static void Main(string[] args)
         {
-            static void Main(string[] args)
+            Class1 c1 = new Class1();
+            while (true)
             {
-                Class1 c1=new Class1();
+                Console.Write("\nEnter a number (or press 'q' to quit): ");
+                string input = Console.ReadLine();
 
-                while (true)
+                if (input.Equals("q", StringComparison.OrdinalIgnoreCase))
                 {
-                    Console.Write("\nEnter a number (or press 'q' to quit): ");
-                    string input = Console.ReadLine();
-
-                    if (input.Equals("q", StringComparison.OrdinalIgnoreCase))
-                    {
-                        Console.WriteLine("Exiting...");
-                        break;
-                    }
-
-                    c1.FindMaxProduct(input);
+                    Console.WriteLine("Exiting...");
+                    break;
                 }
+                string result = c1.FindMaxProduct(input);
+                Console.WriteLine(result);
             }
         }
-    
-
+    }
 }

@@ -2,15 +2,18 @@
 {
     public class Class1
     {
-        public void FindMaxProduct(string number)
+        public string FindMaxProduct(string number)
         {
+            if (!number.All(char.IsDigit))
+            {
+                return "Invalid input. Please enter digits only (0-9).";
+            }
             if (number.Length < 4)
             {
-                Console.WriteLine("Input must have at least 4 digits.");
-                return;
+                return "Input must have at least 4 digits.";
             }
 
-            int maxProduct = 0;
+            int maxProduct = -1;
             string maxDigits = "";
 
             for (int i = 0; i <= number.Length - 4; i++)
@@ -39,11 +42,11 @@
 
             if (!string.IsNullOrEmpty(maxDigits))
             {
-                Console.WriteLine($"{maxDigits} = {maxProduct}");
+                return $"{maxDigits} = {maxProduct}";
             }
             else
             {
-                Console.WriteLine("No valid 4-digit product found.");
+                return "No valid 4-digit product found.";
             }
         }
     }
