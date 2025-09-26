@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            Class1 c1 = new Class1();
+            MaxProductCalculator c1 = new MaxProductCalculator();
             while (true)
             {
                 Console.Write("\nEnter a number (or press 'q' to quit): ");

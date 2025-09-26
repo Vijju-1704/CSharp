@@ -1,6 +1,6 @@
 ﻿namespace Assignment2
 {
-    public class Class1
+    public class MaxProductCalculator
     {
         public string FindMaxProduct(string number)
         {
@@ -18,24 +18,24 @@
 
             for (int i = 0; i <= number.Length - 4; i++)
             {
-                char c1 = number[i];
-                char c2 = number[i + 1];
-                char c3 = number[i + 2];
-                char c4 = number[i + 3];
+                char firstDigitChar = number[i];
+                char secondDigitChar = number[i + 1];
+                char thirdDigitChar = number[i + 2];
+                char fourthtDigitChar = number[i + 3];
 
-                if (char.IsDigit(c1) && char.IsDigit(c2) && char.IsDigit(c3) && char.IsDigit(c4))
+                if (char.IsDigit(firstDigitChar) && char.IsDigit(secondDigitChar) && char.IsDigit(thirdDigitChar) && char.IsDigit(fourthtDigitChar))
                 {
-                    int d1 = c1 - '0';
-                    int d2 = c2 - '0';
-                    int d3 = c3 - '0';
-                    int d4 = c4 - '0';
+                    int firstDigit = firstDigitChar - '0';
+                    int secondDigit = secondDigitChar - '0';
+                    int thirdDigit = thirdDigitChar - '0';
+                    int fourthDigit = fourthtDigitChar - '0';
 
-                    int product = d1 * d2 * d3 * d4;
+                    int product = firstDigit * secondDigit * thirdDigit * fourthDigit;
 
                     if (product > maxProduct)
                     {
                         maxProduct = product;
-                        maxDigits = $"{d1}*{d2}*{d3}*{d4}";
+                        maxDigits = $"{firstDigit}*{secondDigit}*{thirdDigit}*{fourthDigit}";
                     }
                 }
             }
